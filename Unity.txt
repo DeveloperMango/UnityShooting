@@ -1,0 +1,46 @@
+유니티공부
+
+인생 유니티 교과서 참고
+
+0831
+1.벡터(Vector)
+벡터는 크기와 방향의 두가지 정보를 내포하고 있다. 벡터는 사칙연산 중 더하기, 빼기, 곱하기를 할 수 있으며 여기서 곱하기를 내적(Dot Product), 외적(Cross Product)라고 한다. 중요하므로 따로 공부
+
+2. 라이프사이클함수(Life Cycle Function)
+ 유니티 내부 함수가 각각 Start, Update, OnDestory 이다.
+Update: 라이프사이클 함수 중 사는 동안 계속 호출되는 함수
+Start: 태어날 때 딱 한 번 호출되는 함수, 초기 설정 값을 지정
+OnDestory: 이벤트로 발생한다는 의미로 함수 이름 앞에 접두사 On을 붙인다.
+
+3.deltaTime
+delta는 변화된 것을 뜻한다. 즉, 시간이 변한 값이라고 할 수 있다. deltaTime은 이동할 때만 사용하지 않고 회전하는 애니메이션처리, 크기 변호나하는 애니메이션에서도 사용된다.
+
+=========================================================
+0901
+1. 사용자 입력 처리
+Edit-Project Settings-Input의 Axes 목록
+ex) Input.GetAxis("Horizontal");
+
+2. 방향 만들기
+왼손과 오른손을 통해 왼손 좌표계, 오른손좌표계로 나뉘어 사용한다.
+왼손 	↑:y ↗:z →:x
+오른손 	↑:y ↙:z →:x
+
+Vector3.right*h -> x,y,z -> (1,0,0) * h -> (h,0,0)
+Vector3.up*v 	-> x,y,z -> (0,1,0) * v -> (0,v,0)
+따라서, (h,0,0)+(0,v,0) = (h,v,0)
+
+3. 플레이어 이동시키기
+등속운동: P=P0+vt(P0:현재위치,v:속도,t:시간)
+v에 영향을 미치는것: v = v0+at(v0:현재속도, a:가속도, t:시간)
+가속도: F=ma(F:힘, m:질량, a: 가속도)
+Translate 함수 공식
+transform.position+= Vector3+speed+Time.deltaTime
+
+4. 총알의 이동제작
+ 최동 하고 싶은 동작: 1.이동하고싶다 -> 2.방향구하기 
+방향을구한다: Vector3 dir = Vector3.up;
+이동하고싶다(P=P0+vt): dir*speed*Time.deltaTime;
+
+ 
+
